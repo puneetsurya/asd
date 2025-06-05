@@ -16,6 +16,10 @@ The project is logically divided into two main parts, executed sequentially with
 
 This section is dedicated to preparing the raw log data for analysis.
 
+### Optional Utility
+
+* **`download_and_load_log_data_from_url()`:** This function provides a mechanism to download the log file directly from a given URL, save it locally, and then load it using the existing `load_raw_log_data` function. This addresses the assessment brief's mention of potential URL access.
+
 1.  **File Loading:**
     * **Purpose:** To read all raw log entries from the specified file into memory.
     * **Implementation:** The `load_raw_log_data` function is used. It supports both plain text (`.csv`) and gzipped (`.gz`) files, automatically detecting the file type based on its extension. It reads lines using `latin-1` encoding, which is commonly found in older log files, to prevent decoding errors. Each line is `strip()`-ed to remove leading/trailing whitespace.
@@ -84,9 +88,6 @@ This section contains functions to answer specific analytical questions, all ope
     * **Objective:** Count how often each HTTP status code appears.
     * **Logic:** Uses `value_counts()` on the `http_code` column of the entire DataFrame to get the frequency of each unique status code.
 
-### Optional Utility
-
-* **`download_and_load_log_data_from_url()`:** This function provides a mechanism to download the log file directly from a given URL, save it locally, and then load it using the existing `load_raw_log_data` function. This addresses the assessment brief's mention of potential URL access.
 
 ## How to Run the Project
 
